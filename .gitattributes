@@ -1,0 +1,7 @@
+# Mark this as a JavaScript project
+*.js linguist-detectable=true
+*.html linguist-detectable=true
+*.css linguist-detectable=true
+
+# Set JavaScript as the primary language
+*.js linguist-language=JavaScript
