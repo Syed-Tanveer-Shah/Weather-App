@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Check real-time weather data for any city around the world with our beautiful weather app">
+    <title>Weather App - Real-Time Weather Data</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="weather-card">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="cityInput" class="search-input" placeholder="Search your city..."
+                        autocomplete="off">
+                    <button id="searchBtn" class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Weather Display Section -->
+            <div class="weather-display">
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state hidden">
+                    <div class="loader"></div>
+                    <p>Fetching weather data...</p>
+                </div>
+
+                <!-- Error State -->
+                <div id="errorState" class="error-state hidden">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h3 id="errorMessage">City not found</h3>
+                    <p>Please try searching for another city</p>
+                </div>
+
+                <!-- Weather Content -->
+                <div id="weatherContent" class="weather-content hidden">
+                    <!-- Location Info -->
+                    <div class="location-info">
+                        <h1 id="cityName" class="city-name">London, United Kingdom</h1>
+                        <p id="dateTime" class="date-time">Friday, February 23, 2024 at 10:37 AM</p>
+                    </div>
+
+                    <!-- Weather Condition Badge -->
+                    <div class="condition-badge">
+                        <span id="weatherCondition">Clouds</span>
+                    </div>
+
+                    <!-- Main Weather Display -->
+                    <div class="main-weather">
+                        <div class="weather-icon-container">
+                            <img id="weatherIcon" src="" alt="Weather icon" class="weather-icon">
+                        </div>
+                        <div class="temperature-display">
+                            <h2 id="temperature" class="temperature">278°</h2>
+                            <div class="temp-range">
+                                <span id="minTemp">Min 277°</span>
+                                <span class="separator">|</span>
+                                <span id="maxTemp">Max 279°</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Details Grid -->
+                    <div class="weather-details">
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="detail-info">
+                                <p class="detail-label">Feels Like</p>
+                                <p id="feelsLike" class="detail-value">275°</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="detail-info">
+                                <p class="detail-label">Humidity</p>
+                                <p id="humidity" class="detail-value">89%</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="detail-info">
+                                <p class="detail-label">Wind</p>
+                                <p id="windSpeed" class="detail-value">3.68 m/s</p>
+                            </div>
+                        </div>
+
+                        <div class="detail-card">
+                            <div class="detail-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41">
+                                    </path>
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                </svg>
+                            </div>
+                            <div class="detail-info">
+                                <p class="detail-label">Pressure</p>
+                                <p id="pressure" class="detail-value">1013 hPa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Initial State -->
+                <div id="initialState" class="initial-state">
+                    <div class="initial-icon">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
+                    <h2>Welcome to Weather App</h2>
+                    <p>Search for a city to get real-time weather information</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
