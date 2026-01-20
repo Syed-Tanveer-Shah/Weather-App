@@ -1,8 +1,7 @@
 # Force GitHub to recognize this as a JavaScript project
-# Exclude CSS from language statistics
-*.css linguist-vendored=false
-*.css linguist-documentation=false
+# Mark CSS as vendored to exclude from language statistics
+*.css linguist-vendored=true
 
-# Ensure JavaScript is detected
+# Ensure JavaScript and HTML are detected
 *.js linguist-detectable=true
 *.html linguist-detectable=true
