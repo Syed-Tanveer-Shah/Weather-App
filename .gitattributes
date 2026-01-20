@@ -1,7 +1,8 @@
-# Mark this as a JavaScript project
+# Force GitHub to recognize this as a JavaScript project
+# Exclude CSS from language statistics
+*.css linguist-vendored=false
+*.css linguist-documentation=false
+
+# Ensure JavaScript is detected
 *.js linguist-detectable=true
 *.html linguist-detectable=true
-*.css linguist-detectable=true
-
-# Set JavaScript as the primary language
-*.js linguist-language=JavaScript
